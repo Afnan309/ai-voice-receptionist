@@ -1,0 +1,410 @@
+{
+ "_note": "Dev set. First run was held-out (24/30); six bugs it exposed were fixed, so it is now used for development. Reference time Monday 2026-11-09 10:05.",
+ "calls": [
+  {
+   "turns": [
+    "Hey, my furnace is making a loud banging noise when it starts",
+    "4410 W 32nd Ave, Denver 80212",
+    "Tom Becker",
+    "720-555-0111",
+    "Wednesday morning works",
+    "the first"
+   ],
+   "expect": {
+    "outcome": "booked",
+    "service": "hvac_repair",
+    "day": "2026-11-11",
+    "name": "Tom Becker",
+    "phone": "(720) 555-0111"
+   }
+  },
+  {
+   "turns": [
+    "I'd like to schedule an AC tune-up",
+    "It's 900 Grant Street 80203",
+    "My name is Alicia Gomez",
+    "3035550162",
+    "Friday afternoon",
+    "second one please"
+   ],
+   "expect": {
+    "outcome": "booked",
+    "service": "ac_tuneup",
+    "day": "2026-11-13",
+    "name": "Alicia Gomez",
+    "phone": "(303) 555-0162"
+   }
+  },
+  {
+   "turns": [
+    "My kitchen sink is backed up again",
+    "Yes it's 15 Cherry Lane, 80206",
+    "This is Priya Shah",
+    "303 555 0129",
+    "tomorrow is fine, any time",
+    "first one"
+   ],
+   "expect": {
+    "outcome": "booked",
+    "service": "drain_cleaning",
+    "day": "2026-11-10",
+    "name": "Priya Shah",
+    "phone": "(303) 555-0129"
+   }
+  },
+  {
+   "turns": [
+    "Hi there, we have no hot water since this morning",
+    "2780 S Downing St 80210",
+    "Kevin O'Neil",
+    "(720) 555-0134",
+    "as soon as possible",
+    "the earlier one"
+   ],
+   "expect": {
+    "outcome": "booked",
+    "service": "water_heater",
+    "name": "Kevin O'Neil",
+    "phone": "(720) 555-0134"
+   }
+  },
+  {
+   "turns": [
+    "The breaker in my garage keeps tripping",
+    "601 Logan Street 80203",
+    "Sam Turner",
+    "720 555 0177",
+    "Thursday after 2pm",
+    "first"
+   ],
+   "expect": {
+    "outcome": "booked",
+    "service": "electrical",
+    "day": "2026-11-12",
+    "name": "Sam Turner",
+    "phone": "(720) 555-0177"
+   }
+  },
+  {
+   "turns": [
+    "Can someone service my furnace before it gets colder? Like a tune up",
+    "8 Holly Court 80220",
+    "Grace Lee"
+   ],
+   "expect": {
+    "outcome": "out_of_area",
+    "service": "furnace_tuneup"
+   }
+  },
+  {
+   "turns": [
+    "There's water pouring from my ceiling, I think a pipe burst upstairs",
+    "3200 Vine St 80205",
+    "Daniel Price",
+    "303-555-0188",
+    "first one"
+   ],
+   "expect": {
+    "outcome": "emergency_booked",
+    "service": "plumbing_repair",
+    "day": "2026-11-09",
+    "emergency_level": "urgent",
+    "name": "Daniel Price"
+   }
+  },
+  {
+   "turns": [
+    "It smells like rotten eggs in our basement",
+    "303 555 0101",
+    "1020 Corona St 80218"
+   ],
+   "expect": {
+    "outcome": "escalated",
+    "emergency_level": "life_safety",
+    "phone": "(303) 555-0101"
+   }
+  },
+  {
+   "turns": [
+    "Our carbon monoxide detector is going off",
+    "my number is 720-555-0150",
+    "77 Race Street, 80206"
+   ],
+   "expect": {
+    "outcome": "escalated",
+    "emergency_level": "life_safety",
+    "phone": "(720) 555-0150"
+   }
+  },
+  {
+   "turns": [
+    "An outlet in the bedroom is sparking",
+    "(303) 555-0146",
+    "455 Clarkson St 80203"
+   ],
+   "expect": {
+    "outcome": "escalated",
+    "emergency_level": "life_safety",
+    "phone": "(303) 555-0146"
+   }
+  },
+  {
+   "turns": [
+    "Our furnace died and the house is freezing",
+    "1500 Pearl Street 80203",
+    "Nina Alvarez",
+    "720 555 0193",
+    "first please"
+   ],
+   "expect": {
+    "outcome": "emergency_booked",
+    "service": "hvac_repair",
+    "emergency_level": "urgent",
+    "name": "Nina Alvarez"
+   }
+  },
+  {
+   "turns": [
+    "How much do you charge for drain cleaning?",
+    "no thank you, just checking prices"
+   ],
+   "expect": {
+    "outcome": "faq_answered"
+   }
+  },
+  {
+   "turns": [
+    "Are you guys open on Saturday?",
+    "Nope, that's all"
+   ],
+   "expect": {
+    "outcome": "faq_answered"
+   }
+  },
+  {
+   "turns": [
+    "What's the price for an AC tune up?",
+    "Sure, let's book it",
+    "2045 Bellaire St 80207",
+    "Omar Haddad",
+    "303-555-0170",
+    "next Monday morning",
+    "the first one"
+   ],
+   "expect": {
+    "outcome": "booked",
+    "service": "ac_tuneup",
+    "day": "2026-11-16",
+    "name": "Omar Haddad",
+    "phone": "(303) 555-0170"
+   }
+  },
+  {
+   "turns": [
+    "I'd like to speak with a person please"
+   ],
+   "expect": {
+    "outcome": "transferred"
+   }
+  },
+  {
+   "turns": [
+    "Do you fix garage doors?"
+   ],
+   "expect": {
+    "outcome": "not_served"
+   }
+  },
+  {
+   "turns": [
+    "My toilet won't stop running",
+    "33 Spruce Way 80012",
+    "Hannah Kim",
+    "720-555-0105",
+    "Saturday at 10",
+    "first"
+   ],
+   "expect": {
+    "outcome": "booked",
+    "service": "plumbing_repair",
+    "day": "2026-11-14",
+    "name": "Hannah Kim",
+    "phone": "(720) 555-0105"
+   }
+  },
+  {
+   "turns": [
+    "the thermostat isn't turning on the heat",
+    "6200 E Hampden Ave 80222"
+   ],
+   "expect": {
+    "outcome": "out_of_area",
+    "service": "hvac_repair"
+   }
+  },
+  {
+   "turns": [
+    "Hi, my AC is leaking water onto the floor",
+    "742 Evergreen Terrace Dr 80226",
+    "Lisa Park",
+    "303 555 0164",
+    "Tuesday afternoon",
+    "the second"
+   ],
+   "expect": {
+    "outcome": "booked",
+    "service": "hvac_repair",
+    "day": "2026-11-10",
+    "name": "Lisa Park",
+    "phone": "(303) 555-0164"
+   }
+  },
+  {
+   "turns": [
+    "Need an electrician to look at some flickering lights",
+    "1188 Elati St 80204",
+    "Marco Rossi",
+    "7205550140",
+    "earliest you have",
+    "the first one"
+   ],
+   "expect": {
+    "outcome": "booked",
+    "service": "electrical",
+    "name": "Marco Rossi",
+    "phone": "(720) 555-0140"
+   }
+  },
+  {
+   "turns": [
+    "My water heater is leaking a little",
+    "4 Birch Place 80120",
+    "Ella Wright",
+    "303-555-0136",
+    "Friday morning please",
+    "first"
+   ],
+   "expect": {
+    "outcome": "booked",
+    "service": "water_heater",
+    "day": "2026-11-13",
+    "name": "Ella Wright"
+   }
+  },
+  {
+   "turns": [
+    "Can you send a plumber, my shower drain is really slow",
+    "2500 Clay St 80211",
+    "Ben Foster",
+    "303 555 0153",
+    "Thursday",
+    "the second one"
+   ],
+   "expect": {
+    "outcome": "booked",
+    "service": "drain_cleaning",
+    "day": "2026-11-12",
+    "name": "Ben Foster"
+   }
+  },
+  {
+   "turns": [
+    "Hello, my heat pump is blowing cold air",
+    "980 S Pearl St 80209",
+    "My name's Chris Young",
+    "720-555-0118",
+    "after 4 on Wednesday",
+    "yes that works"
+   ],
+   "expect": {
+    "outcome": "booked",
+    "service": "hvac_repair",
+    "day": "2026-11-11",
+    "name": "Chris Young"
+   }
+  },
+  {
+   "turns": [
+    "Is there a trip charge to come out?",
+    "Yes I'd like to book",
+    "My furnace is short cycling",
+    "210 Federal Blvd 80219"
+   ],
+   "expect": {
+    "outcome": "out_of_area"
+   }
+  },
+  {
+   "turns": [
+    "My basement is flooded from the sewer line",
+    "5100 Lowell Blvd 80221"
+   ],
+   "now": "2026-11-09T21:30",
+   "expect": {
+    "outcome": "out_of_area",
+    "emergency_level": "urgent"
+   }
+  },
+  {
+   "turns": [
+    "The pipe under my sink burst and water is everywhere",
+    "1400 Josephine St 80206",
+    "Rosa Diaz",
+    "720 555 0126",
+    "first"
+   ],
+   "now": "2026-11-09T21:30",
+   "expect": {
+    "outcome": "emergency_booked",
+    "emergency_level": "urgent",
+    "service": "plumbing_repair",
+    "day": "2026-11-10",
+    "name": "Rosa Diaz"
+   }
+  },
+  {
+   "turns": [
+    "Can I talk to someone at the office?"
+   ],
+   "now": "2026-11-09T21:30",
+   "expect": {
+    "outcome": "transferred"
+   }
+  },
+  {
+   "turns": [
+    "I want to get my AC checked, it's not cooling well",
+    "3500 Tejon Street 80211",
+    "Will Hughes",
+    "720 555 0108",
+    "Monday the 16th in the afternoon",
+    "first"
+   ],
+   "expect": {
+    "outcome": "booked",
+    "service": "hvac_repair",
+    "day": "2026-11-16",
+    "name": "Will Hughes"
+   }
+  },
+  {
+   "turns": [
+    "I'm calling about the job posting for a technician"
+   ],
+   "expect": {
+    "outcome": "not_served"
+   }
+  },
+  {
+   "turns": [
+    "Hi, can I get a quote on installing an EV charger?",
+    "Sure book a visit",
+    "61 Ogden St 80218"
+   ],
+   "expect": {
+    "outcome": "out_of_area",
+    "service": "electrical"
+   }
+  }
+ ]
+}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Calls · AI Receptionist{% endblock %}
+{% block head %}
+<style>
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+  .kpi{padding:16px 18px}.kpi span{color:var(--muted);font-size:12px}.kpi b{display:block;font-size:28px;margin-top:2px}
+  table{width:100%;border-collapse:collapse}th{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:left;padding:12px 16px;border-bottom:1px solid var(--line)}
+  td{padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top}tr:last-child td{border:0}
+  td .n{font-weight:600}td .s{color:#334155;line-height:1.45;max-width:560px}a{color:var(--brand-d);font-weight:600;text-decoration:none}
+</style>
+{% endblock %}
+{% block body %}
+<div class="kpis">
+  <div class="card kpi"><span>Calls answered</span><b>{{ kpi.calls }}</b></div>
+  <div class="card kpi"><span>Appointments booked</span><b>{{ kpi.booked }}</b></div>
+  <div class="card kpi"><span>Emergencies handled</span><b>{{ kpi.emerg }}</b></div>
+  <div class="card kpi"><span>Calls after hours</span><b>{{ kpi.after }}</b></div>
+</div>
+<div class="card"><table>
+  <tr><th>Time</th><th>Caller</th><th>Outcome</th><th>Summary</th><th></th></tr>
+  {% for c in calls %}
+  <tr><td class="mono">{{ c.started[5:10] }} {{ c.started[11:16] }}<div class="muted" style="font-size:11px;margin-top:3px">{{ c.channel }}</div></td>
+    <td><div class="n">{{ c.caller or 'Unknown caller' }}</div><div class="muted">{{ c.phone or '' }}</div></td>
+    <td><span class="badge o-{{ c.outcome }}">{{ labels.get(c.outcome, c.outcome) }}</span></td>
+    <td><div class="s">{{ c.summary }}</div></td>
+    <td><a href="/call/{{ c.id }}">Transcript →</a></td></tr>
+  {% endfor %}
+</table></div>
+{% endblock %}

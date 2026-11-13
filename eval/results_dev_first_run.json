@@ -1,0 +1,120 @@
+{
+  "test_calls": 30,
+  "task_success": 24,
+  "task_success_rate": 0.8,
+  "field_accuracy": {
+    "outcome": "29/30",
+    "service": "17/19",
+    "day": "11/13",
+    "name": "13/16",
+    "phone": "12/12",
+    "emergency_level": "7/7"
+  },
+  "life_safety_escalated": "3/3",
+  "urgent_detected": "4/4",
+  "bookings_made": 15,
+  "double_bookings": 0,
+  "avg_caller_turns": 4.2,
+  "avg_response_ms": 0.6,
+  "p95_response_ms": 1.99,
+  "failures": [
+    {
+      "call": 2,
+      "expected": {
+        "outcome": "booked",
+        "service": "drain_cleaning",
+        "day": "2026-11-10",
+        "name": "Priya Shah",
+        "phone": "(303) 555-0129"
+      },
+      "got": {
+        "outcome": "incomplete",
+        "service": "drain_cleaning",
+        "day": null,
+        "name": "First One",
+        "phone": "(303) 555-0129"
+      }
+    },
+    {
+      "call": 3,
+      "expected": {
+        "outcome": "booked",
+        "service": "water_heater",
+        "name": "Kevin O'Neil",
+        "phone": "(720) 555-0134"
+      },
+      "got": {
+        "outcome": "booked",
+        "service": "water_heater",
+        "name": "Kevin O'neil",
+        "phone": "(720) 555-0134"
+      }
+    },
+    {
+      "call": 4,
+      "expected": {
+        "outcome": "booked",
+        "service": "electrical",
+        "day": "2026-11-12",
+        "name": "Sam Turner",
+        "phone": "(720) 555-0177"
+      },
+      "got": {
+        "outcome": "booked",
+        "service": "electrical",
+        "day": "2026-11-09",
+        "name": "Sam Turner",
+        "phone": "(720) 555-0177"
+      }
+    },
+    {
+      "call": 18,
+      "expected": {
+        "outcome": "booked",
+        "service": "hvac_repair",
+        "day": "2026-11-10",
+        "name": "Lisa Park",
+        "phone": "(303) 555-0164"
+      },
+      "got": {
+        "outcome": "booked",
+        "service": "plumbing_repair",
+        "day": "2026-11-10",
+        "name": "Lisa Park",
+        "phone": "(303) 555-0164"
+      }
+    },
+    {
+      "call": 22,
+      "expected": {
+        "outcome": "booked",
+        "service": "hvac_repair",
+        "day": "2026-11-11",
+        "name": "Chris Young"
+      },
+      "got": {
+        "outcome": "booked",
+        "service": "hvac_repair",
+        "day": "2026-11-11",
+        "name": "After On Wednesday"
+      }
+    },
+    {
+      "call": 25,
+      "expected": {
+        "outcome": "emergency_booked",
+        "emergency_level": "urgent",
+        "service": "plumbing_repair",
+        "day": "2026-11-10",
+        "name": "Rosa Diaz"
+      },
+      "got": {
+        "outcome": "emergency_booked",
+        "emergency_level": "urgent",
+        "service": "drain_cleaning",
+        "day": "2026-11-10",
+        "name": "Rosa Diaz"
+      }
+    }
+  ]
+}

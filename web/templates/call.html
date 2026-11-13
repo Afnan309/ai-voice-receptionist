@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}{{ c.id }} · AI Receptionist{% endblock %}
+{% block head %}
+<style>
+  .head{display:flex;align-items:center;gap:12px;margin-bottom:16px}.head h1{margin:0;font-size:20px}
+  .grid{display:grid;grid-template-columns:1fr 430px;gap:16px}
+  .tx{padding:18px 20px}.b{max-width:80%;padding:10px 14px;border-radius:14px;margin-bottom:10px;line-height:1.5}
+  .b.agent{background:var(--soft);color:#064e3b;border-bottom-left-radius:4px}
+  .b.caller{background:#0f1f1a;color:#fff;margin-left:auto;border-bottom-right-radius:4px}
+  .who{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:3px;opacity:.7}
+  .pane{padding:18px;margin-bottom:16px}.kv{display:grid;grid-template-columns:110px 1fr;gap:8px 12px;font-size:13.5px}.kv span{color:var(--muted)}
+  .ev{display:flex;gap:10px;font-size:13px;padding:6px 0;border-bottom:1px dashed var(--line)}.ev:last-child{border:0}.ev i{color:var(--brand);font-style:normal;font-weight:700}
+  .phone{background:#0f1f1a;border-radius:22px;padding:16px;color:#fff}.sms{background:#34d399;color:#04241a;border-radius:16px;padding:12px 14px;font-size:13px;line-height:1.5}
+  .alert{background:var(--red-soft);color:var(--red);border-radius:12px;padding:12px 14px;font-size:13px;line-height:1.5;font-weight:500}
+</style>
+{% endblock %}
+{% block body %}
+<div class="head"><h1>{{ c.caller or 'Unknown caller' }}</h1><span class="badge o-{{ c.outcome }}">{{ labels.get(c.outcome, c.outcome) }}</span><span class="muted mono">{{ c.id }} · {{ c.started.replace('T', ' ') }} · {{ c.channel }}</span></div>
+<div class="grid">
+  <div class="card tx"><h3>Call transcript</h3>
+    {% for m in c.transcript %}<div class="b {{ m.role }}"><div class="who">{{ 'Ava (AI)' if m.role=='agent' else 'Caller' }}</div>{{ m.text }}</div>{% endfor %}
+  </div>
+  <div>
+    <div class="card pane"><h3>AI summary</h3><div style="line-height:1.55">{{ c.summary }}</div></div>
+    <div class="card pane"><h3>Captured details</h3><div class="kv">
+      <span>Name</span><b>{{ c.slots.get('name', '—') }}</b>
+      <span>Phone</span><b>{{ c.slots.get('phone', '—') }}</b>
+      <span>Address</span><b>{{ c.slots.get('street', '—') }} {{ c.slots.get('zip', '') }}</b>
+      <span>Service</span><b>{{ biz.services[c.slots.service].label if c.slots.get('service') else '—' }}</b>
+      {% if c.emergency %}<span>Triage</span><b style="color:var(--red)">{{ c.emergency }}</b>{% endif %}
+    </div></div>
+    <div class="card pane"><h3>Actions taken</h3>{% for e in c.events %}<div class="ev"><i>✓</i>{{ e }}</div>{% endfor %}</div>
+    {% if sms %}<div class="card pane"><h3>SMS confirmation sent</h3><div class="phone"><div class="muted" style="font-size:11px;margin-bottom:8px;color:#94a3b8">To {{ sms.to }}</div><div class="sms">{{ sms.body }}</div></div></div>{% endif %}
+    {% if c.outcome == 'escalated' %}<div class="card pane"><h3>On-call alert</h3><div class="alert">Urgent page sent to the on-call technician: {{ c.emergency }}. Callback {{ c.phone }}.</div></div>{% endif %}
+  </div>
+</div>
+{% endblock %}

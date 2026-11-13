@@ -1,0 +1,66 @@
+{
+  "test_calls": 25,
+  "task_success": 22,
+  "task_success_rate": 0.88,
+  "field_accuracy": {
+    "outcome": "22/25",
+    "service": "17/17",
+    "day": "12/13",
+    "name": "14/14",
+    "phone": "11/11",
+    "emergency_level": "5/6"
+  },
+  "life_safety_escalated": "2/2",
+  "urgent_detected": "3/4",
+  "bookings_made": 13,
+  "double_bookings": 0,
+  "avg_caller_turns": 4.2,
+  "avg_response_ms": 0.74,
+  "p95_response_ms": 1.92,
+  "failures": [
+    {
+      "call": 11,
+      "expected": {
+        "outcome": "faq_answered"
+      },
+      "got": {
+        "outcome": "incomplete"
+      }
+    },
+    {
+      "call": 19,
+      "expected": {
+        "outcome": "emergency_booked",
+        "emergency_level": "urgent",
+        "service": "hvac_repair",
+        "day": "2026-11-09",
+        "name": "Nathan Reed"
+      },
+      "got": {
+        "outcome": "booked",
+        "emergency_level": null,
+        "service": "hvac_repair",
+        "day": "2026-11-09",
+        "name": "Nathan Reed"
+      }
+    },
+    {
+      "call": 20,
+      "expected": {
+        "outcome": "booked",
+        "service": "plumbing_repair",
+        "day": "2026-11-10",
+        "name": "Amy Foster",
+        "phone": "(720) 555-0213"
+      },
+      "got": {
+        "outcome": "incomplete",
+        "service": "plumbing_repair",
+        "day": null,
+        "name": "Amy Foster",
+        "phone": "(720) 555-0213"
+      }
+    }
+  ],
+  "split": "test"
+}

@@ -1,0 +1,22 @@
+{
+  "test_calls": 30,
+  "task_success": 30,
+  "task_success_rate": 1.0,
+  "field_accuracy": {
+    "outcome": "30/30",
+    "service": "19/19",
+    "day": "13/13",
+    "name": "16/16",
+    "phone": "12/12",
+    "emergency_level": "7/7"
+  },
+  "life_safety_escalated": "3/3",
+  "urgent_detected": "4/4",
+  "bookings_made": 16,
+  "double_bookings": 0,
+  "avg_caller_turns": 4.2,
+  "avg_response_ms": 0.55,
+  "p95_response_ms": 1.76,
+  "failures": [],
+  "split": "dev"
+}

@@ -1,0 +1,34 @@
+{
+ "book_service": [
+  "I need someone to come look at my air conditioner", "can I schedule a furnace tune up", "my drain is clogged can you send someone",
+  "I'd like to book an appointment", "my water heater is making noise can you check it", "need an electrician to install some outlets",
+  "the AC is blowing warm air", "can you send a plumber this week", "I want to set up a maintenance visit for my heater",
+  "my kitchen sink won't drain", "the breaker keeps tripping", "I need my AC serviced before summer", "toilet keeps running can someone fix it",
+  "hi I'd like a technician to come out", "furnace is making a weird noise", "could I get someone out tomorrow"
+ ],
+ "pricing_question": [
+  "how much is a tune up", "what do you charge for drain cleaning", "how much does it cost to have someone come out",
+  "what's your diagnostic fee", "is there a trip charge", "how much for a water heater flush", "what are your prices",
+  "do you charge for estimates", "how much would an AC tune up be"
+ ],
+ "hours_question": [
+  "what are your hours", "are you open on saturday", "when do you close", "are you open on sundays", "what time do you open tomorrow",
+  "do you work weekends", "are you open right now"
+ ],
+ "cancel": [
+  "I need to cancel my appointment", "please cancel my visit tomorrow", "I won't need the technician anymore cancel it",
+  "can you cancel my booking", "cancel the appointment I made"
+ ],
+ "reschedule": [
+  "I need to reschedule my appointment", "can I move my visit to another day", "something came up can we change the time",
+  "I'd like to change my appointment", "can we push my appointment to next week"
+ ],
+ "talk_to_human": [
+  "can I talk to a real person", "let me speak to someone", "transfer me to a human please", "I want to talk to the manager",
+  "is there a person I can speak with", "operator please"
+ ],
+ "other": [
+  "do you sell lawn mowers", "can you fix my car", "what's the weather like", "I'm calling about a job opening",
+  "do you do roofing", "wrong number sorry"
+ ]
+}

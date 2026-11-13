@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Test a call · AI Receptionist{% endblock %}
+{% block head %}
+<style>
+  .grid{display:grid;grid-template-columns:1fr 380px;gap:16px}
+  .chat{padding:18px 20px;height:640px;display:flex;flex-direction:column}
+  .log{flex:1;overflow:auto}.b{max-width:80%;padding:10px 14px;border-radius:14px;margin-bottom:10px;line-height:1.5}
+  .b.agent{background:var(--soft);color:#064e3b}.b.caller{background:#0f1f1a;color:#fff;margin-left:auto}
+  form{display:flex;gap:10px;margin-top:10px}input{flex:1;border:1px solid var(--line);border-radius:12px;padding:12px 14px;font:inherit}
+  button{background:var(--brand);color:#fff;border:0;border-radius:12px;padding:0 18px;font:inherit;font-weight:600}
+  .pane{padding:18px}.kv div{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--line);font-size:13px}
+</style>
+{% endblock %}
+{% block body %}
+<div class="grid">
+  <div class="card chat"><h3>Test call (type what the caller says)</h3><div class="log" id="log"></div>
+    <form id="f"><input id="t" placeholder="e.g. My AC is blowing warm air" autocomplete="off"><button>Say</button></form></div>
+  <div class="card pane"><h3>What Ava understood</h3><div class="kv" id="kv"></div><h3 style="margin-top:18px">Outcome</h3><div id="out" class="muted">In progress</div></div>
+</div>
+<script>
+let sid=null;const log=document.getElementById('log');
+function add(t,r){const d=document.createElement('div');d.className='b '+r;d.textContent=t;log.appendChild(d);log.scrollTop=log.scrollHeight}
+async function start(now){const r=await fetch('/api/sim/start',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({now})});const j=await r.json();sid=j.session;add(j.reply,'agent')}
+async function say(text){add(text,'caller');const r=await fetch('/api/sim/say',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({session:sid,text})});const j=await r.json();
+ if(j.reply)add(j.reply,'agent');document.getElementById('kv').innerHTML=Object.entries(j.slots).map(([k,v])=>`<div><span class="muted">${k}</span><b>${v}</b></div>`).join('');
+ document.getElementById('out').textContent=(j.ended?j.outcome:'in progress')+(j.events.length?' · '+j.events.join(' · '):'')}
+document.getElementById('f').onsubmit=e=>{e.preventDefault();const i=document.getElementById('t');if(i.value.trim()){say(i.value.trim());i.value=''}};
+window.say=say;window.startCall=start;start(new URLSearchParams(location.search).get('now'));
+</script>
+{% endblock %}

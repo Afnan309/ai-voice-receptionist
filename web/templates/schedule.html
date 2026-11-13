@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Schedule · AI Receptionist{% endblock %}
+{% block head %}
+<style>
+  .head{display:flex;align-items:center;gap:14px;margin-bottom:16px}.head h1{margin:0;font-size:20px}
+  .legend{margin-left:auto;display:flex;gap:14px;font-size:12px;color:var(--muted)}.legend i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:6px;vertical-align:-2px}
+  table{width:100%;border-collapse:separate;border-spacing:6px}th{font-size:12px;color:var(--muted);font-weight:600;text-align:left;padding:4px 6px}
+  th.t{width:90px}td{height:62px;border-radius:10px;background:#f8fafc;border:1px dashed #e2e8f0;padding:6px 8px;vertical-align:top;font-size:12px}
+  td.office{background:#e2e8f0;border:0;color:#475569}td.ai{background:var(--soft);border:1.5px solid #34d399;color:#064e3b}
+  td.urgent{background:var(--amber-soft);border:1.5px solid #f59e0b;color:#92400e}td b{display:block;font-size:12.5px}
+  .tech{font-weight:700;font-size:13px;padding-top:20px}
+</style>
+{% endblock %}
+{% block body %}
+<div class="head"><h1>Technician schedule</h1><span class="muted">Week of {{ days[0].strftime('%B') }} {{ days[0].day }}</span>
+  <div class="legend"><span><i style="background:#e2e8f0"></i>Booked by office</span><span><i style="background:#d1fae5;border:1.5px solid #34d399"></i>Booked by Ava (AI)</span><span><i style="background:#fef3c7;border:1.5px solid #f59e0b"></i>Urgent</span></div></div>
+<div class="card" style="padding:10px 14px">
+<table>
+  {% for tech in techs %}
+  <tr><th class="t"></th>{% for d in days %}<th>{{ d.strftime('%a') }} {{ d.day }}</th>{% endfor %}</tr>
+  {% for s, e in windows %}
+  <tr><th class="t">{% if loop.first %}<div class="tech">{{ tech }}</div>{% endif %}<span class="muted" style="font-weight:500">{{ window_label(s) }}</span></th>
+    {% for d in days %}{% set b = grid.get((tech, d.isoformat(), s)) %}
+      {% if b %}<td class="{{ 'urgent' if b.emergency else ('ai' if b.source == 'ai-receptionist' else 'office') }}">{% set lb = biz.services[b.service].label %}<b>{{ lb[0]|upper ~ lb[1:] }}</b>{{ b.customer if b.source == 'ai-receptionist' else 'Existing job' }}</td>
+      {% else %}<td></td>{% endif %}
+    {% endfor %}</tr>
+  {% endfor %}
+  {% endfor %}
+</table></div>
+{% endblock %}

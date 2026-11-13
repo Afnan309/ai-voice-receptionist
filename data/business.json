@@ -1,0 +1,25 @@
+{
+  "name": "Summit Home Services",
+  "phone": "(303) 555-0190",
+  "timezone": "America/Denver",
+  "hours": "Monday to Saturday, 8 AM to 6 PM. Emergency service is available 24/7.",
+  "service_zips": ["80202", "80203", "80204", "80205", "80206", "80207", "80209", "80210", "80211", "80212",
+                   "80014", "80012", "80226", "80227", "80120", "80122", "80003", "80030", "80031", "80110"],
+  "windows": [[8, 10], [10, 12], [12, 14], [14, 16], [16, 18]],
+  "workdays": [0, 1, 2, 3, 4, 5],
+  "technicians": [
+    {"name": "Jake", "skills": ["hvac_repair", "ac_tuneup", "furnace_tuneup"]},
+    {"name": "Maria", "skills": ["plumbing_repair", "drain_cleaning", "water_heater"]},
+    {"name": "Dev", "skills": ["electrical", "hvac_repair", "furnace_tuneup", "ac_tuneup"]}
+  ],
+  "services": {
+    "hvac_repair":     {"label": "heating or AC repair", "price": "an $89 diagnostic visit, waived if you approve the repair"},
+    "ac_tuneup":       {"label": "AC tune-up", "price": "$129 per system"},
+    "furnace_tuneup":  {"label": "furnace tune-up", "price": "$119 per system"},
+    "plumbing_repair": {"label": "plumbing repair", "price": "an $89 diagnostic visit, waived if you approve the repair"},
+    "drain_cleaning":  {"label": "drain cleaning", "price": "$149 per drain"},
+    "water_heater":    {"label": "water heater service", "price": "$99 for a flush; repairs are quoted on site"},
+    "electrical":      {"label": "electrical service", "price": "an $89 diagnostic visit, waived if you approve the repair"}
+  },
+  "emergency_fee": "$179 emergency dispatch fee"
+}
